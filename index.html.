@@ -14,7 +14,7 @@
         header {
             background-color: #5c4632;
             padding:40px;
-            text-aling: center;
+            text-align: center;
         }
         h1 {
             margin: 0;
@@ -26,7 +26,7 @@
             color: #d4cfc7;
         }
         button {
-            background_color: #4a5d3a;
+            background-color: #4a5d3a;
             color: white;
             padding: 15px 30px;
             border: none;
