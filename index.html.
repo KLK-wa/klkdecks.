@@ -7,13 +7,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin:0;
+            margin: 0;
             background-color: #1a1a1a;
             color: #f5f5f5;
         }
         header {
             background-color: #5c4632;
-            padding:40px;
+            padding: 40px;
             text-align: center;
         }
         h1 {
@@ -23,7 +23,7 @@
             color: #f5f5f5;
         }
         p {
-            color: #d4cfc7;
+           color: #d4cfc7;
         }
         button {
             background-color: #4a5d3a;
@@ -34,11 +34,60 @@
             font-size: 1rem;
             cursor: pointer;
         }
+        .calculator {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .calculator imput {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .calculator label {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            color: #d4cfc7;
+        }
+        .result {
+            margin-top: 20px;
+            font-size 1.3rem;
+            color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
-    <h1>klk</h1>
-    <p>Quality Decks & Railings in Washington</p>
-    <button> Get a Free Quote</button>
+    <header>
+         <h1>klk</h1>
+         <p>Quality Decks & Railings in Washington</p>
+         <button> Get a Free Quote</button>
+    </header>
+
+    <div class="calculator">
+        <h2>Estimate Your Deck</h2>
+        <label>Length (feet)</label>
+        <input type="number" id="length" placeholder="e.g. 20">
+        <label>Width (feet)</label>
+        <input type="number" id="width" placeholder="e.g. 12">
+        <button onclick="calculate()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            var length = document.getElementById('length').value;
+            var width = document.getElementById('width).value;
+            var area = length * width;
+            var price = area * 25;
+            document.getElementById('result').innerHTML = "Area: " + area + " sq ft - Est. $" + price;
+        }
+    </script>
 </body>
 </html>
