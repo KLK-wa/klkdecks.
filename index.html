@@ -5,52 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>klk - Decks & Railings</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        header {
-            background-color: #5c4632;
-            padding: 40px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            color: #f5f5f5;
-        }
-        p {
-           color: #d4cfc7;
-        }
-        button {
-            background-color: #4a5d3a;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .calculator {
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .calculator imput {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            font-size: 1rem;
-            border-radius: 5px;
+            padding: 0;
             box-sizing: border-box;
         }
-        .calculator label {
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #141414;
+            color: #f0ece6;
+            line-height: 1.5;
+        }
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+        }
+        nav .logo {
+            font-size: 1.6rem;
+            letter-spacing: 6px;
+            font-weight: 300;
+        }
+        nav .links a {
+            color: #f0ece6;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        nav .quote {
+            border: 1px solid #f0ece6;
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        /* HERO */
+        .hero {
+            display: flex;
+            min-height: 420px;
+            background-image: url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            align-items: flex-end;
+            padding: 40px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .hero p { 
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        /* CALCULATOR */
+        .calculator {
             display: block;
             text-align: left;
             margin-top: 15px;
