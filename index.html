@@ -1,174 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>klk - Decks & Railings</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #141414;
-            color: #f0ece6;
-            line-height: 1.5;
-        }
-        /* NAV */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 40px;
-        }
-        nav .logo {
-            font-size: 1.6rem;
-            letter-spacing: 6px;
-            font-weight: 300;
-        }
-        nav .links a {
-            color: #f0ece6;
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        nav .quote {
-            border: 1px solid #f0ece6;
-            padding: 10px 20px;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        /* HERO */
-        .hero {
-            display: flex;
-            min-height: 420px;
-            background-image: url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            align-items: flex-end;
-            padding: 40px;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-        .hero p { 
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-        /* CALCULATOR */
-        .calculator {
-            max-width: 420px;
-            margin: 60px auto;
-            padding: 40px;
-            background-color: #1c1c1c;
-            border: 1px solid #2a2a2a;
-        }
-        .calculator h2 {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 300;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .calculator label {
-            display: block;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 18px;
-            color: #aaa;
-        }
-        .calculator imput {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            font-size: 1rem;
-            background-color: #141414;
-            border: 1px solid #333;
-            color: #f0ece6;
-        }
-        .calculator button {
-            width: 100%
-            margin-top: 25px;
-            padding: 14px;
-            background-color: #f0ece6;
-            color: #141414;
-            border: none;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-        .result {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #666;
-        }
-    </style>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>klk — Decks & Railings</title>
+   <style>
+       * { margin: 0; padding: 0; box-sizing: border-box; }
+       body {
+           font-family: 'Helvetica Neue', Arial, sans-serif;
+           background-color: #0f0f0f;
+           color: #ece7df;
+           line-height: 1.6;
+       }
+       /* NAV */
+       nav {
+           display: flex; justify-content: space-between; align-items: center;
+           padding: 28px 60px;
+       }
+       nav .logo { font-size: 1.5rem; letter-spacing: 8px; font-weight: 300; }
+       nav .links a {
+           color: #ece7df; text-decoration: none; margin-left: 35px;
+           font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+       }
+       nav .quote {
+           border: 1px solid #ece7df; padding: 11px 22px;
+           font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+       }
+       /* HERO */
+       .hero {
+           position: relative; min-height: 80vh; display: flex; align-items: flex-end;
+           background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
+           background-size: cover; background-position: center;
+           padding: 60px;
+       }
+       .hero::before {
+           content: ''; position: absolute; inset: 0;
+           background: linear-gradient(to top, rgba(15,15,15,0.9), rgba(15,15,15,0.2));
+       }
+       .hero .content { position: relative; z-index: 2; }
+       .hero h1 {
+           font-size: 3.4rem; font-weight: 300; letter-spacing: 6px;
+           text-transform: uppercase; line-height: 1.15;
+       }
+       .hero p { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.75; margin-top: 15px; }
+       .hero .loc {
+           position: absolute; top: 50%; right: 60px; transform: translateY(-50%);
+           writing-mode: vertical-rl; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6;
+       }
+       /* SECTIONS */
+       .section { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
+       .section h2 {
+           font-size: 1rem; letter-spacing: 5px; text-transform: uppercase;
+           font-weight: 300; margin-bottom: 40px; color: #8a857c;
+       }
+       .section h3 { font-size: 2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+       .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+       .card { background-color: #181818; border: 1px solid #242424; padding: 30px; }
+       .card h4 { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; }
+       .card p { font-size: 0.85rem; color: #a5a096; }
+       /* CALCULATOR */
+       .calc {
+           max-width: 520px; margin: 90px auto; padding: 50px;
+           background-color: #141414; border: 1px solid #242424; text-align: center;
+       }
+       .calc h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; }
+       .calc label { display: block; text-align: left; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
+       .calc input {
+           width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem;
+           background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df;
+       }
+       .calc button {
+           width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df;
+           color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px;
+           text-transform: uppercase; cursor: pointer;
+       }
+       .calc .result { margin-top: 25px; font-size: 1.2rem; letter-spacing: 1px; color: #ece7df; }
+       /* CONTACT FORM */
+       .contact { max-width: 520px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
+       .contact h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; text-align: center; }
+       .contact label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
+       .contact input, .contact textarea {
+           width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem;
+           background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df; font-family: inherit;
+       }
+       .contact button {
+           width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df;
+           color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px;
+           text-transform: uppercase; cursor: pointer;
+       }
+       footer { text-align: center; padding: 50px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #666; }
+       @media (max-width: 700px) {
+           nav { padding: 20px; flex-wrap: wrap; gap: 15px; }
+           nav .links a { margin-left: 15px; }
+           .hero { padding: 30px; min-height: 60vh; }
+           .hero h1 { font-size: 2rem; }
+           .grid { grid-template-columns: 1fr; }
+       }
+   </style>
 </head>
 <body>
-    </nav>
-         <div class="logo">klk</div>
-         <div class="links">
-             <a href="#">Home</a>
-             <a href="#">Gallery</a>
-             <a href="#">Materials</a>
-             <a href="#">Contact</a>
-         </div>
-         <div class="quote">Get a Free Quote</div>
-     </nav>
+   <nav>
+       <div class="logo">klk</div>
+       <div class="links">
+           <a href="#decks">Decks</a>
+           <a href="#railings">Railings</a>
+           <a href="#contact">Contact</a>
+       </div>
+       <div class="quote">Get a Free Quote</div>
+   </nav>
 
-     <div class="Hero">
-         <div>
-             </h1>Decks & Railings</h1>
-             <p>Quality Craftsmanship in Washington</p>
-         </div>
-     </div>
+   <div class="hero">
+       <div class="content">
+           <h1>Decks &amp; Railings.<br>Untamed.<br>Unchanged.</h1>
+           <p>Quality Craftsmanship in Washington</p>
+       </div>
+       <div class="loc">SEATTLE · WASHINGTON</div>
+   </div>
 
-    <div class="calculator">
-        <h2>Estimate Your Deck</h2>
-        <label>Length (feet)</label>
-        <input type="number" id="length" placeholder="e.g. 20">
-        </label>Width (feet)</label>
-        <input type="number" id="width" placeholder="e.g. 12">
-        <button onclick="calculate()">Calculate</button>
-        <div class="result" id="result"></div>
-    </div>
+   <div class="section" id="decks">
+       <h2>01 — Decks</h2>
+       <h3>Built to Last<br>in Every Season</h3>
+       <div class="grid">
+           <div class="card"><h4>Composite Decks</h4><p>Low-maintenance, weather-resistant decks that keep their color through Washington's rain.</p></div>
+           <div class="card"><h4>Wood Decks</h4><p>Classic natural wood with premium finishes, built to age beautifully.</p></div>
+           <div class="card"><h4>Custom Design</h4><p>Every deck tailored to your home and landscape — no two alike.</p></div>
+       </div>
+   </div>
 
-    <footer>klk - Decks & Railings · Washington</footer>
+   <div class="section" id="railings">
+       <h2>02 — Railings</h2>
+       <h3>Safety.<br>With Style.</h3>
+       <div class="grid">
+           <div class="card"><h4>Wood Railings</h4><p>Warm, natural rails that match your deck perfectly.</p></div>
+           <div class="card"><h4>Glass Panels</h4><p>Modern, unobstructed views that keep your space open.</p></div>
+           <div class="card"><h4>Metal &amp; Cable</h4><p>Sleek, durable options for a contemporary look.</p></div>
+       </div>
+   </div>
 
-    <script>
-        function calculate() {
-            var length = document.getElementById('length').value;
-            var width = document.getElementById('width').value;
-            if (length > 0 && width > 0) {
-                var area = length * width;
-                var price = area * 25;
-                document.getElementById('result').innerHTML = area + " sq ft - Est. $" + price;
-            } else {
-                document.getElementById('result').innerHTML = "Enter both measurements";
-            }
-        }
-    </script>
+   <div class="calc">
+       <h2>Estimate Your Deck</h2>
+       <label>Length (feet)</label>
+       <input type="number" id="length" placeholder="e.g. 20">
+       <label>Width (feet)</label>
+       <input type="number" id="width" placeholder="e.g. 12">
+       <label>Material</label>
+       <select id="material" style="width:100%;padding:13px;margin-top:6px;font-size:1rem;background-color:#0f0f0f;border:1px solid #2e2e2e;color:#ece7df;">
+           <option value="25">Wood — $25 / sq ft</option>
+           <option value="35">Composite — $35 / sq ft</option>
+       </select>
+       <button onclick="calculate()">Calculate</button>
+       <div class="result" id="result"></div>
+   </div>
+
+   <div class="contact" id="contact">
+       <h2>Request a Free Quote</h2>
+       <label>Your Name</label>
+       <input type="text" placeholder="Full name">
+       <label>Phone</label>
+       <input type="tel" placeholder="(555) 000-0000">
+       <label>Email</label>
+       <input type="email" placeholder="you@email.com">
+       <label>Address</label>
+       <input type="text" placeholder="Street, City, WA">
+       <label>Project Details</label>
+       <textarea rows="4" placeholder="Tell us about your deck..."></textarea>
+       <button>Send Request</button>
+   </div>
+
+   <footer>klk — Decks &amp; Railings · Washington</footer>
+
+   <script>
+       function calculate() {
+           var length = document.getElementById('length').value;
+           var width = document.getElementById('width').value;
+           var material = document.getElementById('material').value;
+           if (length > 0 && width > 0) {
+               var area = length * width;
+               var price = area * material;
+               document.getElementById('result').innerHTML = area + " sq ft — Est. $" + price;
+           } else {
+               document.getElementById('result').innerHTML = "Enter both measurements";
+           }
+       }
+   </script>
 </body>
 </html>
