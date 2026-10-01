@@ -15,9 +15,9 @@
        /* NAV */
        nav {
            display: flex; justify-content: space-between; align-items: center;
-           padding: 28px 60px;
+           padding: 30px 60px;
        }
-       nav .logo { font-size: 1.5rem; letter-spacing: 8px; font-weight: 300; }
+       nav .logo { font-size: 2.4rem; letter-spacing: 10px; font-weight: 300; }
        nav .links a {
            color: #ece7df; text-decoration: none; margin-left: 35px;
            font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
@@ -28,44 +28,41 @@
        }
        /* HERO */
        .hero {
-           position: relative; min-height: 80vh; display: flex; align-items: flex-end;
+           position: relative; min-height: 85vh; display: flex; align-items: flex-end;
            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
            background-size: cover; background-position: center;
-           padding: 60px;
+           padding: 70px;
        }
        .hero::before {
            content: ''; position: absolute; inset: 0;
-           background: linear-gradient(to top, rgba(15,15,15,0.9), rgba(15,15,15,0.2));
+           background: linear-gradient(to top, rgba(15,15,15,0.92), rgba(15,15,15,0.25));
        }
        .hero .content { position: relative; z-index: 2; }
        .hero h1 {
-           font-size: 3.4rem; font-weight: 300; letter-spacing: 6px;
-           text-transform: uppercase; line-height: 1.15;
+           font-size: 4rem; font-weight: 300; letter-spacing: 6px;
+           text-transform: uppercase; line-height: 1.1;
        }
-       .hero p { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.75; margin-top: 15px; }
-       .hero .loc {
+       .hero p { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.75; margin-top: 18px; }
+       .loc {
            position: absolute; top: 50%; right: 60px; transform: translateY(-50%);
            writing-mode: vertical-rl; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6;
        }
        /* SECTIONS */
        .section { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
-       .section h2 {
-           font-size: 1rem; letter-spacing: 5px; text-transform: uppercase;
-           font-weight: 300; margin-bottom: 40px; color: #8a857c;
-       }
-       .section h3 { font-size: 2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+       .section h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px; color: #8a857c; }
+       .section h3 { font-size: 2.2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; }
        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
        .card { background-color: #181818; border: 1px solid #242424; padding: 30px; }
        .card h4 { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; }
        .card p { font-size: 0.85rem; color: #a5a096; }
        /* CALCULATOR */
        .calc {
-           max-width: 520px; margin: 90px auto; padding: 50px;
+           max-width: 560px; margin: 90px auto; padding: 50px;
            background-color: #141414; border: 1px solid #242424; text-align: center;
        }
        .calc h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; }
        .calc label { display: block; text-align: left; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
-       .calc input {
+       .calc input, .calc select {
            width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem;
            background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df;
        }
@@ -75,8 +72,8 @@
            text-transform: uppercase; cursor: pointer;
        }
        .calc .result { margin-top: 25px; font-size: 1.2rem; letter-spacing: 1px; color: #ece7df; }
-       /* CONTACT FORM */
-       .contact { max-width: 520px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
+       /* CONTACT */
+       .contact { max-width: 560px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
        .contact h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; text-align: center; }
        .contact label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
        .contact input, .contact textarea {
@@ -93,7 +90,7 @@
            nav { padding: 20px; flex-wrap: wrap; gap: 15px; }
            nav .links a { margin-left: 15px; }
            .hero { padding: 30px; min-height: 60vh; }
-           .hero h1 { font-size: 2rem; }
+           .hero h1 { font-size: 2.2rem; }
            .grid { grid-template-columns: 1fr; }
        }
    </style>
@@ -144,9 +141,16 @@
        <label>Width (feet)</label>
        <input type="number" id="width" placeholder="e.g. 12">
        <label>Material</label>
-       <select id="material" style="width:100%;padding:13px;margin-top:6px;font-size:1rem;background-color:#0f0f0f;border:1px solid #2e2e2e;color:#ece7df;">
+       <select id="material">
            <option value="25">Wood — $25 / sq ft</option>
            <option value="35">Composite — $35 / sq ft</option>
+           <option value="40">Premium Hardwood — $40 / sq ft</option>
+       </select>
+       <label>Railings</label>
+       <select id="railing">
+           <option value="0">No railings</option>
+           <option value="15">Wood railings — +$15 / ft</option>
+           <option value="25">Glass railings — +$25 / ft</option>
        </select>
        <button onclick="calculate()">Calculate</button>
        <div class="result" id="result"></div>
@@ -174,9 +178,11 @@
            var length = document.getElementById('length').value;
            var width = document.getElementById('width').value;
            var material = document.getElementById('material').value;
+           var railing = document.getElementById('railing').value;
            if (length > 0 && width > 0) {
+               var perimeter = 2 * (Number(length) + Number(width));
                var area = length * width;
-               var price = area * material;
+               var price = area * material + perimeter * railing;
                document.getElementById('result').innerHTML = area + " sq ft — Est. $" + price;
            } else {
                document.getElementById('result').innerHTML = "Enter both measurements";
