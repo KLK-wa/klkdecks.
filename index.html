@@ -7,7 +7,7 @@
    <style>
        * { margin: 0; padding: 0; box-sizing: border-box; }
        body {
-           font-family: 'Helvetica Neue', Arial, sans-serif;
+           font-family: 'Helvetica Neue, Arial, sans-serif;
            background-color: #0f0f0f;
            color: #ece7df;
            line-height: 1.6;
@@ -17,7 +17,7 @@
            display: flex; justify-content: space-between; align-items: center;
            padding: 30px 60px;
        }
-       nav .logo { font-size: 2.4rem; letter-spacing: 10px; font-weight: 300; }
+       nav .logo { font-size: 2.6rem; letter-spacing: 12px; font-weight: 300; }
        nav .links a {
            color: #ece7df; text-decoration: none; margin-left: 35px;
            font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
@@ -29,7 +29,7 @@
        /* HERO */
        .hero {
            position: relative; min-height: 85vh; display: flex; align-items: flex-end;
-           background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
+           background-image: url('deck.jpg');
            background-size: cover; background-position: center;
            padding: 70px;
        }
@@ -57,7 +57,7 @@
        .card p { font-size: 0.85rem; color: #a5a096; }
        /* CALCULATOR */
        .calc {
-           max-width: 560px; margin: 90px auto; padding: 50px;
+           max-width: 600px; margin: 90px auto; padding: 50px;
            background-color: #141414; border: 1px solid #242424; text-align: center;
        }
        .calc h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; }
@@ -72,8 +72,9 @@
            text-transform: uppercase; cursor: pointer;
        }
        .calc .result { margin-top: 25px; font-size: 1.2rem; letter-spacing: 1px; color: #ece7df; }
+       .calc .result small { display: block; font-size: 0.75rem; color: #8a857c; margin-top: 8px; }
        /* CONTACT */
-       .contact { max-width: 560px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
+       .contact { max-width: 600px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
        .contact h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; text-align: center; }
        .contact label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
        .contact input, .contact textarea {
@@ -85,6 +86,10 @@
            color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px;
            text-transform: uppercase; cursor: pointer;
        }
+       /* MAP */
+       .map { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
+       .map h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px; color: #8a857c; }
+       .map iframe { width: 100%; height: 450px; border: 1px solid #242424; filter: grayscale(100%) invert(90%) contrast(90%); }
        footer { text-align: center; padding: 50px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #666; }
        @media (max-width: 700px) {
            nav { padding: 20px; flex-wrap: wrap; gap: 15px; }
@@ -92,6 +97,7 @@
            .hero { padding: 30px; min-height: 60vh; }
            .hero h1 { font-size: 2.2rem; }
            .grid { grid-template-columns: 1fr; }
+           .map iframe { height: 300px; }
        }
    </style>
 </head>
@@ -152,6 +158,12 @@
            <option value="15">Wood railings — +$15 / ft</option>
            <option value="25">Glass railings — +$25 / ft</option>
        </select>
+       <label>Levels (stories)</label>
+       <select id="levels">
+           <option value="1">1 level</option>
+           <option value="2">2 levels</option>
+           <option value="3">3 levels</option>
+       </select>
        <button onclick="calculate()">Calculate</button>
        <div class="result" id="result"></div>
    </div>
@@ -171,6 +183,13 @@
        <button>Send Request</button>
    </div>
 
+   <div class="map">
+       <h2>Service Area — Washington</h2>
+       <iframe
+           src="https://www.google.com/maps?q=Washington+State&output=embed"
+           loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+   </div>
+
    <footer>klk — Decks &amp; Railings · Washington</footer>
 
    <script>
@@ -179,11 +198,14 @@
            var width = document.getElementById('width').value;
            var material = document.getElementById('material').value;
            var railing = document.getElementById('railing').value;
+           var levels = document.getElementById('levels').value;
            if (length > 0 && width > 0) {
                var perimeter = 2 * (Number(length) + Number(width));
                var area = length * width;
-               var price = area * material + perimeter * railing;
-               document.getElementById('result').innerHTML = area + " sq ft — Est. $" + price;
+               var price = area * material * levels + perimeter * railing;
+               document.getElementById('result').innerHTML =
+                   area + " sq ft — Est. $" + price +
+                   "<small>Includes " + material + " material, " + levels + " level(s), railings</small>";
            } else {
                document.getElementById('result').innerHTML = "Enter both measurements";
            }
