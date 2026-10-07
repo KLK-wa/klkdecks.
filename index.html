@@ -6,6 +6,7 @@
    <title>klk — Decks & Railings</title>
    <style>
        * { margin: 0; padding: 0; box-sizing: border-box; }
+       html { scroll-behavior: smooth; }
        body {
            font-family: 'Helvetica Neue', Arial, sans-serif;
            background-color: #0f0f0f;
@@ -15,74 +16,129 @@
        /* NAV */
        nav {
            display: flex; justify-content: space-between; align-items: center;
-           padding: 30px 60px;
+           padding: 28px 60px; position: sticky; top: 0; z-index: 100;
+           background-color: rgba(15,15,15,0.9); backdrop-filter: blur(8px);
        }
-       nav .logo { font-size: 2.6rem; letter-spacing: 12px; font-weight: 300; }
+       nav .logo { font-size: 2.4rem; letter-spacing: 12px; font-weight: 300; }
        nav .links a {
-           color: #ece7df; text-decoration: none; margin-left: 35px;
-           font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+           color: #ece7df; text-decoration: none; margin-left: 30px;
+           font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
        }
+       nav .links a:hover { color: #a5a096; }
        nav .quote {
-           border: 1px solid #ece7df; padding: 11px 22px;
+           border: 1px solid #ece7df; padding: 11px 22px; text-decoration: none; color: #ece7df;
            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
        }
+       nav .quote:hover { background-color: #ece7df; color: #0f0f0f; }
        /* HERO */
        .hero {
-           position: relative; min-height: 85vh; display: flex; align-items: flex-end;
+           position: relative; min-height: 88vh; display: flex; align-items: flex-end;
            background-image: url('image0.jpeg');
-           background-size: cover; background-position: center;
+           background-size: cover; background-position: center 35%;
            padding: 70px;
        }
        .hero::before {
            content: ''; position: absolute; inset: 0;
-           background: linear-gradient(to top, rgba(15,15,15,0.92), rgba(15,15,15,0.2));
+           background: linear-gradient(to top, rgba(15,15,15,0.95), rgba(15,15,15,0.15));
        }
-       .hero .content { position: relative; z-index: 2; }
+       .hero .content { position: relative; z-index: 2; max-width: 700px; }
+       .hero .eyebrow { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: #a5a096; margin-bottom: 20px; }
        .hero h1 {
-           font-size: 4rem; font-weight: 300; letter-spacing: 6px;
+           font-size: 4rem; font-weight: 300; letter-spacing: 5px;
            text-transform: uppercase; line-height: 1.1;
        }
-       .hero p { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.75; margin-top: 18px; }
+       .hero p { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.75; margin-top: 20px; }
+       .hero .cta { display: inline-block; margin-top: 35px; padding: 16px 35px; background-color: #ece7df; color: #0f0f0f; text-decoration: none; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; }
        .loc {
            position: absolute; top: 50%; right: 60px; transform: translateY(-50%);
            writing-mode: vertical-rl; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6;
        }
-       /* MATERIALS CAROUSEL */
-       .materials { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
-       .materials h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; color: #8a857c; }
-       .materials h3 { font-size: 2.2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
-       .carousel { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 20px; }
+       /* SECTIONS */
+       .section { max-width: 1100px; margin: 100px auto; padding: 0 40px; }
+       .section h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; color: #8a857c; }
+       .section h3 { font-size: 2.4rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; }
+       .section p.lead { font-size: 1rem; color: #a5a096; max-width: 650px; margin-bottom: 40px; }
+       /* STATS */
+       .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; text-align: center; }
+       .stat { padding: 30px; border: 1px solid #242424; }
+       .stat .num { font-size: 2.6rem; font-weight: 300; letter-spacing: 2px; }
+       .stat .lbl { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #8a857c; margin-top: 8px; }
+       /* GRID */
+       .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+       .card { background-color: #181818; border: 1px solid #242424; padding: 30px; }
+       .card h4 { font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; }
+       .card p { font-size: 0.85rem; color: #a5a096; }
+       /* CAROUSEL */
+       .carousel { display: flex; gap: 24px; overflow-x: auto; padding: 15px; }
        .carousel::-webkit-scrollbar { height: 4px; }
        .carousel::-webkit-scrollbar-thumb { background: #333; }
-       .swatch {
-           flex: 0 0 auto; width: 120px; cursor: pointer; text-align: center;
-       }
-       .swatch .circle {
-           width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
-           border: 2px solid #2a2a2a; transition: border-color 0.3s ease;
-       }
-       .swatch .circle img {
-           width: 100%; height: 100%; object-fit: cover; display: block;
-           transition: transform 0.3s ease;
-       }
-       .swatch p {
-           font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
-           color: #8a857c; margin-top: 10px;
-       }
+       .swatch { flex: 0 0 auto; width: 120px; cursor: pointer; text-align: center; transition: transform 0.35s ease; }
+       .swatch .circle { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 2px solid #2a2a2a; transition: border-color 0.35s ease; }
+       .swatch .circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
+       .swatch p { font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: #8a857c; margin-top: 10px; }
+       .swatch.selected { transform: scale(1.2); }
        .swatch.selected .circle { border-color: #ece7df; }
        .swatch.selected p { color: #ece7df; }
-       .selected-info {
-           margin-top: 35px; padding: 25px; background-color: #141414;
-           border: 1px solid #242424; text-align: center;
-       }
+       .selected-info { margin-top: 35px; padding: 25px; background-color: #141414; border: 1px solid #242424; text-align: center; }
        .selected-info h4 { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
        .selected-info p { font-size: 0.8rem; color: #8a857c; margin-top: 8px; }
+       /* CALC */
+       .calc { max-width: 600px; margin: 100px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; text-align: center; }
+       .calc h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; }
+       .calc label { display: block; text-align: left; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
+       .calc input, .calc select { width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem; background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df; }
+       .calc button { width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df; color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; }
+       .calc .result { margin-top: 25px; font-size: 1.2rem; letter-spacing: 1px; color: #ece7df; }
+       .calc .result small { display: block; font-size: 0.72rem; color: #8a857c; margin-top: 8px; }
+       /* TESTIMONIALS */
+       .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+       .testimonial { background-color: #181818; border: 1px solid #242424; padding: 30px; }
+       .testimonial .stars { color: #d4af37; letter-spacing: 3px; margin-bottom: 15px; font-size: 0.9rem; }
+       .testimonial p { font-size: 0.9rem; color: #a5a096; font-style: italic; }
+       .testimonial .who { margin-top: 20px; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #ece7df; }
+       /* STEPS */
+       .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+       .step { padding: 30px; border: 1px solid #242424; position: relative; }
+       .step .n { font-size: 0.7rem; letter-spacing: 3px; color: #8a857c; margin-bottom: 10px; }
+       .step h4 { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; margin-bottom: 12px; }
+       .step p { font-size: 0.8rem; color: #a5a096; }
+       /* GUARANTEE */
+       .guarantee { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+       .gitem { padding: 30px; border: 1px solid #242424; text-align: center; }
+       .gitem .icon { font-size: 1.8rem; margin-bottom: 15px; }
+       .gitem h4 { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; margin-bottom: 12px; }
+       .gitem p { font-size: 0.8rem; color: #a5a096; }
+       /* FAQ */
+       .faq { max-width: 800px; margin: 0 auto; }
+       .faq-item { border: 1px solid #242424; margin-bottom: 15px; }
+       .faq-item summary { padding: 20px; cursor: pointer; font-size: 0.9rem; letter-spacing: 1px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+       .faq-item summary::after { content: '+'; font-size: 1.3rem; color: #8a857c; }
+       .faq-item[open] summary::after { content: '−'; }
+       .faq-item p { padding: 0 20px 20px; font-size: 0.85rem; color: #a5a096; }
+       /* CONTACT */
+       .contact { max-width: 600px; margin: 100px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
+       .contact h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; text-align: center; }
+       .contact label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
+       .contact input, .contact textarea { width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem; background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df; font-family: inherit; }
+       .contact .chosen { margin-top: 15px; padding: 12px; border: 1px solid #3a3a3a; font-size: 0.8rem; color: #a5a096; text-align: center; }
+       .contact button { width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df; color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; }
+       /* MAP */
+       .map { max-width: 1100px; margin: 100px auto; padding: 0 40px; }
+       .map h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px; color: #8a857c; }
+       .map iframe { width: 100%; height: 450px; border: 1px solid #242424; filter: grayscale(100%) invert(90%) contrast(90%); }
+       /* CTA */
+       .cta-final { text-align: center; padding: 100px 40px; border-top: 1px solid #242424; }
+       .cta-final h3 { font-size: 2.6rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+       .cta-final p { color: #a5a096; margin-bottom: 35px; }
+       .cta-final a { display: inline-block; padding: 16px 40px; background-color: #ece7df; color: #0f0f0f; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
        footer { text-align: center; padding: 50px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #666; }
-       @media (max-width: 700px) {
+       @media (max-width: 800px) {
            nav { padding: 20px; flex-wrap: wrap; gap: 15px; }
            nav .links a { margin-left: 15px; }
-           .hero { padding: 30px; min-height: 60vh; }
+           .hero { padding: 30px; min-height: 65vh; }
            .hero h1 { font-size: 2.2rem; }
+           .stats, .grid, .testimonials, .steps, .guarantee { grid-template-columns: 1fr; }
+           .map iframe { height: 300px; }
        }
    </style>
 </head>
@@ -90,28 +146,145 @@
    <nav>
        <div class="logo">klk</div>
        <div class="links">
+           <a href="#services">Services</a>
            <a href="#materials">Materials</a>
+           <a href="#testimonials">Reviews</a>
+           <a href="#faq">FAQ</a>
            <a href="#contact">Contact</a>
        </div>
-       <div class="quote">Get a Free Quote</div>
+       <a class="quote" href="#contact">Get a Free Quote</a>
    </nav>
 
    <div class="hero">
        <div class="content">
+           <div class="eyebrow">Quality Craftsmanship · Washington</div>
            <h1>Decks &amp; Railings.<br>Untamed.<br>Unchanged.</h1>
-           <p>Quality Craftsmanship in Washington</p>
+           <p>Built to last through every Pacific Northwest season</p>
+           <a class="cta" href="#contact">Get a Free Quote</a>
        </div>
        <div class="loc">SEATTLE · WASHINGTON</div>
    </div>
 
-   <div class="materials" id="materials">
-       <h2>03 — Materials</h2>
+   <div class="section">
+       <div class="stats">
+           <div class="stat"><div class="num">15+</div><div class="lbl">Years Experience</div></div>
+           <div class="stat"><div class="num">500+</div><div class="lbl">Projects Built</div></div>
+           <div class="stat"><div class="num">100%</div><div class="lbl">Satisfaction</div></div>
+           <div class="stat"><div class="num">Licensed</div><div class="lbl">&amp; Insured</div></div>
+       </div>
+   </div>
+
+   <div class="section" id="services">
+       <h2>01 — Services</h2>
+       <h3>Everything Your Outdoor<br>Space Needs</h3>
+       <div class="grid">
+           <div class="card"><h4>Custom Decks</h4><p>Composite, wood, or premium hardwood — designed around your home and landscape.</p></div>
+           <div class="card"><h4>Railings</h4><p>Wood, glass, or metal cable — safety that looks beautiful.</p></div>
+           <div class="card"><h4>Pergolas</h4><p>Shade structures that extend your living space into the yard.</p></div>
+           <div class="card"><h4>Outdoor Lighting</h4><p>LED lighting to enjoy your deck into the evening.</p></div>
+           <div class="card"><h4>Repairs &amp; Refinishing</h4><p>Bring your existing deck back to life.</p></div>
+           <div class="card"><h4>Custom Design</h4><p>Every project tailored to you — no two alike.</p></div>
+       </div>
+   </div>
+
+   <div class="section" id="materials">
+       <h2>02 — Materials</h2>
        <h3>Choose Your Wood</h3>
+       <p class="lead">Tap a material to select it. Your choice carries into the estimate and your quote request.</p>
        <div class="carousel" id="carousel"></div>
        <div class="selected-info" id="selectedInfo">
            <h4>Select a material</h4>
            <p>Tap a circle to see the details</p>
        </div>
+   </div>
+
+   <div class="calc">
+       <h2>Estimate Your Deck</h2>
+       <label>Material (from your selection)</label>
+       <input type="text" id="matName" readonly placeholder="Select a material above">
+       <label>Length (feet)</label>
+       <input type="number" id="length" placeholder="e.g. 20">
+       <label>Width (feet)</label>
+       <input type="number" id="width" placeholder="e.g. 12">
+       <label>Levels</label>
+       <select id="levels">
+           <option value="1">1 level</option>
+           <option value="2">2 levels</option>
+           <option value="3">3 levels</option>
+       </select>
+       <button onclick="calculate()">Calculate</button>
+       <div class="result" id="result"></div>
+   </div>
+
+   <div class="section" id="testimonials">
+       <h2>03 — Reviews</h2>
+       <h3>What Clients Say</h3>
+       <div class="testimonials">
+           <div class="testimonial"><div class="stars">★★★★★</div><p>"klk built our deck and it's stunning. On time, clean, and beautiful work."</p><div class="who">— Sarah M., Seattle</div></div>
+           <div class="testimonial"><div class="stars">★★★★★</div><p>"Professional from start to finish. The railing detail is flawless."</p><div class="who">— Mike R., Bellevue</div></div>
+           <div class="testimonial"><div class="stars">★★★★★</div><p>"They helped us pick the perfect wood and it looks incredible."</p><div class="who">— Ana L., Tacoma</div></div>
+       </div>
+   </div>
+
+   <div class="section">
+       <h2>04 — Our Process</h2>
+       <h3>Simple, Transparent</h3>
+       <div class="steps">
+           <div class="step"><div class="n">STEP 01</div><h4>Consultation</h4><p>We visit your home, measure, and understand your vision.</p></div>
+           <div class="step"><div class="n">STEP 02</div><h4>Design</h4><p>We create a plan and a clear estimate — no surprises.</p></div>
+           <div class="step"><div class="n">STEP 03</div><h4>Build</h4><p>Craftsmanship you can see in every detail.</p></div>
+           <div class="step"><div class="n">STEP 04</div><h4>Delivery</h4><p>We finish clean and make sure you love it.</p></div>
+       </div>
+   </div>
+
+   <div class="section">
+       <h2>05 — Why Choose Us</h2>
+       <h3>Built on Trust</h3>
+       <div class="guarantee">
+           <div class="gitem"><div class="icon">🛡️</div><h4>Licensed &amp; Insured</h4><p>Full protection for you and your home.</p></div>
+           <div class="gitem"><div class="icon">🌲</div><h4>Premium Materials</h4><p>We use the best woods and composites available.</p></div>
+           <div class="gitem"><div class="icon">🤝</div><h4>Workmanship Warranty</h4><p>We stand behind every project we build.</p></div>
+       </div>
+   </div>
+
+   <div class="section" id="faq">
+       <h2>06 — FAQ</h2>
+       <h3>Common Questions</h3>
+       <div class="faq">
+           <div class="faq-item"><summary>How much does a deck cost?</summary><p>Most decks range from $8,000 to $30,000 depending on size, material, and features. Use our calculator for a quick estimate.</p></div>
+           <div class="faq-item"><summary>How long does it take to build?</summary><p>A typical deck takes 1–2 weeks, depending on size and complexity.</p></div>
+           <div class="faq-item"><summary>Do you work across Washington?</summary><p>Yes — we serve the greater Seattle area and surrounding regions.</p></div>
+           <div class="faq-item"><summary>Do you offer financing?</summary><p>Yes, we offer flexible financing options. Ask us for details.</p></div>
+           <div class="faq-item"><summary>Which material should I choose?</summary><p>Composite lasts longer with less upkeep; wood is classic and warm. We'll help you decide based on your needs.</p></div>
+       </div>
+   </div>
+
+   <div class="contact" id="contact">
+       <h2>Request a Free Quote</h2>
+       <div class="chosen" id="chosenMat">Selected material: none</div>
+       <label>Your Name</label>
+       <input type="text" placeholder="Full name">
+       <label>Phone</label>
+       <input type="tel" placeholder="(555) 000-0000">
+       <label>Email</label>
+       <input type="email" placeholder="you@email.com">
+       <label>Address</label>
+       <input type="text" placeholder="Street, City, WA">
+       <label>Project Details</label>
+       <textarea rows="4" placeholder="Tell us about your project..."></textarea>
+       <button onclick="alert('Thank you! We will contact you soon.')">Send Request</button>
+   </div>
+
+   <div class="map">
+       <h2>Service Area — Washington</h2>
+       <iframe src="https://www.google.com/maps?q=Seattle,Washington&output=embed" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+   </div>
+
+   <div class="cta-final">
+       <h3>Ready for Your<br>Dream Deck?</h3>
+       <p>Free consultation · No obligation · Licensed &amp; insured</p>
+
+       <a href="#contact">Get Your Free Quote</a>
    </div>
 
    <footer>klk — Decks &amp; Railings · Washington</footer>
@@ -126,9 +299,11 @@
            { img: 'image7.jpeg', name: 'Sample 6' },
            { img: 'image9.jpeg', name: 'Sample 7' }
        ];
-
+       var selectedName = 'none';
        var carousel = document.getElementById('carousel');
        var selectedInfo = document.getElementById('selectedInfo');
+       var chosenMat = document.getElementById('chosenMat');
+       var matName = document.getElementById('matName');
 
        materials.forEach(function(m, i) {
            var div = document.createElement('div');
@@ -138,10 +313,28 @@
                var all = carousel.children;
                for (var j = 0; j < all.length; j++) all[j].classList.remove('selected');
                div.classList.add('selected');
+               selectedName = m.name;
                selectedInfo.innerHTML = '<h4>' + m.name + '</h4><p>Selected</p>';
+               chosenMat.innerHTML = 'Selected material: ' + m.name;
+               matName.value = m.name;
            };
            carousel.appendChild(div);
        });
+
+       function calculate() {
+           var length = document.getElementById('length').value;
+           var width = document.getElementById('width').value;
+           var levels = document.getElementById('levels').value;
+           if (length > 0 && width > 0) {
+               var area = length * width;
+               var price = area * 30 * levels;
+               document.getElementById('result').innerHTML =
+                   area + ' sq ft — Est. $' + price +
+                   '<small>Material: ' + selectedName + ' · ' + levels + ' level(s)</small>';
+           } else {
+               document.getElementById('result').innerHTML = 'Enter both measurements';
+           }
+       }
    </script>
 </body>
 </html>
