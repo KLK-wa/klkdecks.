@@ -7,7 +7,7 @@
    <style>
        * { margin: 0; padding: 0; box-sizing: border-box; }
        body {
-           font-family: 'Helvetica Neue, Arial, sans-serif;
+           font-family: 'Helvetica Neue', Arial, sans-serif;
            background-color: #0f0f0f;
            color: #ece7df;
            line-height: 1.6;
@@ -29,7 +29,7 @@
        /* HERO */
        .hero {
            position: relative; min-height: 85vh; display: flex; align-items: flex-end;
-           background-image: url('deck.jpg');
+           background-image: url('Unknown.jpeg');
            background-size: cover; background-position: center;
            padding: 70px;
        }
@@ -47,57 +47,42 @@
            position: absolute; top: 50%; right: 60px; transform: translateY(-50%);
            writing-mode: vertical-rl; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.6;
        }
-       /* SECTIONS */
-       .section { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
-       .section h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px; color: #8a857c; }
-       .section h3 { font-size: 2.2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; }
-       .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-       .card { background-color: #181818; border: 1px solid #242424; padding: 30px; }
-       .card h4 { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; }
-       .card p { font-size: 0.85rem; color: #a5a096; }
-       /* CALCULATOR */
-       .calc {
-           max-width: 600px; margin: 90px auto; padding: 50px;
-           background-color: #141414; border: 1px solid #242424; text-align: center;
+       /* MATERIALS CAROUSEL */
+       .materials { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
+       .materials h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; color: #8a857c; }
+       .materials h3 { font-size: 2.2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
+       .carousel { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+       .carousel::-webkit-scrollbar { height: 4px; }
+       .carousel::-webkit-scrollbar-thumb { background: #333; }
+       .swatch {
+           flex: 0 0 auto; width: 110px; cursor: pointer; text-align: center;
+           transition: all 0.3s ease;
        }
-       .calc h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; }
-       .calc label { display: block; text-align: left; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
-       .calc input, .calc select {
-           width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem;
-           background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df;
+       .swatch img {
+           width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+           border: 2px solid #2a2a2a; transition: all 0.3s ease;
        }
-       .calc button {
-           width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df;
-           color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px;
-           text-transform: uppercase; cursor: pointer;
+       .swatch p {
+           font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+           color: #8a857c; margin-top: 10px;
        }
-       .calc .result { margin-top: 25px; font-size: 1.2rem; letter-spacing: 1px; color: #ece7df; }
-       .calc .result small { display: block; font-size: 0.75rem; color: #8a857c; margin-top: 8px; }
-       /* CONTACT */
-       .contact { max-width: 600px; margin: 90px auto; padding: 50px; background-color: #141414; border: 1px solid #242424; }
-       .contact h2 { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; margin-bottom: 30px; text-align: center; }
-       .contact label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #8a857c; margin-top: 18px; }
-       .contact input, .contact textarea {
-           width: 100%; padding: 13px; margin-top: 6px; font-size: 1rem;
-           background-color: #0f0f0f; border: 1px solid #2e2e2e; color: #ece7df; font-family: inherit;
+       .swatch.selected img {
+           border: 3px solid #ece7df; transform: scale(1.15);
+           box-shadow: 0 0 25px rgba(236,231,223,0.3);
        }
-       .contact button {
-           width: 100%; margin-top: 28px; padding: 15px; background-color: #ece7df;
-           color: #0f0f0f; border: none; font-size: 0.8rem; letter-spacing: 3px;
-           text-transform: uppercase; cursor: pointer;
+       .swatch.selected p { color: #ece7df; }
+       .selected-info {
+           margin-top: 35px; padding: 25px; background-color: #141414;
+           border: 1px solid #242424; text-align: center;
        }
-       /* MAP */
-       .map { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
-       .map h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 40px; color: #8a857c; }
-       .map iframe { width: 100%; height: 450px; border: 1px solid #242424; filter: grayscale(100%) invert(90%) contrast(90%); }
+       .selected-info h4 { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
+       .selected-info p { font-size: 0.8rem; color: #8a857c; margin-top: 8px; }
        footer { text-align: center; padding: 50px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #666; }
        @media (max-width: 700px) {
            nav { padding: 20px; flex-wrap: wrap; gap: 15px; }
            nav .links a { margin-left: 15px; }
            .hero { padding: 30px; min-height: 60vh; }
            .hero h1 { font-size: 2.2rem; }
-           .grid { grid-template-columns: 1fr; }
-           .map iframe { height: 300px; }
        }
    </style>
 </head>
@@ -105,8 +90,7 @@
    <nav>
        <div class="logo">klk</div>
        <div class="links">
-           <a href="#decks">Decks</a>
-           <a href="#railings">Railings</a>
+           <a href="#materials">Materials</a>
            <a href="#contact">Contact</a>
        </div>
        <div class="quote">Get a Free Quote</div>
@@ -120,96 +104,44 @@
        <div class="loc">SEATTLE · WASHINGTON</div>
    </div>
 
-   <div class="section" id="decks">
-       <h2>01 — Decks</h2>
-       <h3>Built to Last<br>in Every Season</h3>
-       <div class="grid">
-           <div class="card"><h4>Composite Decks</h4><p>Low-maintenance, weather-resistant decks that keep their color through Washington's rain.</p></div>
-           <div class="card"><h4>Wood Decks</h4><p>Classic natural wood with premium finishes, built to age beautifully.</p></div>
-           <div class="card"><h4>Custom Design</h4><p>Every deck tailored to your home and landscape — no two alike.</p></div>
+   <div class="materials" id="materials">
+       <h2>03 — Materials</h2>
+       <h3>Choose Your Wood</h3>
+       <div class="carousel" id="carousel"></div>
+       <div class="selected-info" id="selectedInfo">
+           <h4>Select a material</h4>
+           <p>Tap a circle to see the details</p>
        </div>
-   </div>
-
-   <div class="section" id="railings">
-       <h2>02 — Railings</h2>
-       <h3>Safety.<br>With Style.</h3>
-       <div class="grid">
-           <div class="card"><h4>Wood Railings</h4><p>Warm, natural rails that match your deck perfectly.</p></div>
-           <div class="card"><h4>Glass Panels</h4><p>Modern, unobstructed views that keep your space open.</p></div>
-           <div class="card"><h4>Metal &amp; Cable</h4><p>Sleek, durable options for a contemporary look.</p></div>
-       </div>
-   </div>
-
-   <div class="calc">
-       <h2>Estimate Your Deck</h2>
-       <label>Length (feet)</label>
-       <input type="number" id="length" placeholder="e.g. 20">
-       <label>Width (feet)</label>
-       <input type="number" id="width" placeholder="e.g. 12">
-       <label>Material</label>
-       <select id="material">
-           <option value="25">Wood — $25 / sq ft</option>
-           <option value="35">Composite — $35 / sq ft</option>
-           <option value="40">Premium Hardwood — $40 / sq ft</option>
-       </select>
-       <label>Railings</label>
-       <select id="railing">
-           <option value="0">No railings</option>
-           <option value="15">Wood railings — +$15 / ft</option>
-           <option value="25">Glass railings — +$25 / ft</option>
-       </select>
-       <label>Levels (stories)</label>
-       <select id="levels">
-           <option value="1">1 level</option>
-           <option value="2">2 levels</option>
-           <option value="3">3 levels</option>
-       </select>
-       <button onclick="calculate()">Calculate</button>
-       <div class="result" id="result"></div>
-   </div>
-
-   <div class="contact" id="contact">
-       <h2>Request a Free Quote</h2>
-       <label>Your Name</label>
-       <input type="text" placeholder="Full name">
-       <label>Phone</label>
-       <input type="tel" placeholder="(555) 000-0000">
-       <label>Email</label>
-       <input type="email" placeholder="you@email.com">
-       <label>Address</label>
-       <input type="text" placeholder="Street, City, WA">
-       <label>Project Details</label>
-       <textarea rows="4" placeholder="Tell us about your deck..."></textarea>
-       <button>Send Request</button>
-   </div>
-
-   <div class="map">
-       <h2>Service Area — Washington</h2>
-       <iframe
-           src="https://www.google.com/maps?q=Washington+State&output=embed"
-           loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
    </div>
 
    <footer>klk — Decks &amp; Railings · Washington</footer>
 
    <script>
-       function calculate() {
-           var length = document.getElementById('length').value;
-           var width = document.getElementById('width').value;
-           var material = document.getElementById('material').value;
-           var railing = document.getElementById('railing').value;
-           var levels = document.getElementById('levels').value;
-           if (length > 0 && width > 0) {
-               var perimeter = 2 * (Number(length) + Number(width));
-               var area = length * width;
-               var price = area * material * levels + perimeter * railing;
-               document.getElementById('result').innerHTML =
-                   area + " sq ft — Est. $" + price +
-                   "<small>Includes " + material + " material, " + levels + " level(s), railings</small>";
-           } else {
-               document.getElementById('result').innerHTML = "Enter both measurements";
-           }
-       }
+       var materials = [
+           { img: 'Unknown.jpeg', name: 'Sample 1' },
+           { img: 'image0.jpeg', name: 'Sample 2' },
+           { img: 'image2.jpeg', name: 'Sample 3' },
+           { img: 'image3.jpeg', name: 'Sample 4' },
+           { img: 'image5.jpeg', name: 'Sample 5' },
+           { img: 'image7.jpeg', name: 'Sample 6' },
+           { img: 'image9.jpeg', name: 'Sample 7' }
+       ];
+
+       var carousel = document.getElementById('carousel');
+       var selectedInfo = document.getElementById('selectedInfo');
+
+       materials.forEach(function(m, i) {
+           var div = document.createElement('div');
+           div.className = 'swatch';
+           div.innerHTML = '<img src="' + m.img + '"><p>' + m.name + '</p>';
+           div.onclick = function() {
+               var all = carousel.children;
+               for (var j = 0; j < all.length; j++) all[j].classList.remove('selected');
+               div.classList.add('selected');
+               selectedInfo.innerHTML = '<h4>' + m.name + '</h4><p>Selected — tap to continue</p>';
+           };
+           carousel.appendChild(div);
+       });
    </script>
 </body>
 </html>
