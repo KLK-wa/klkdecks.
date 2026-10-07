@@ -29,13 +29,13 @@
        /* HERO */
        .hero {
            position: relative; min-height: 85vh; display: flex; align-items: flex-end;
-           background-image: url('Unknown.jpeg');
+           background-image: url('image0.jpeg');
            background-size: cover; background-position: center;
            padding: 70px;
        }
        .hero::before {
            content: ''; position: absolute; inset: 0;
-           background: linear-gradient(to top, rgba(15,15,15,0.92), rgba(15,15,15,0.25));
+           background: linear-gradient(to top, rgba(15,15,15,0.92), rgba(15,15,15,0.2));
        }
        .hero .content { position: relative; z-index: 2; }
        .hero h1 {
@@ -51,25 +51,25 @@
        .materials { max-width: 1100px; margin: 90px auto; padding: 0 40px; }
        .materials h2 { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 15px; color: #8a857c; }
        .materials h3 { font-size: 2.2rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
-       .carousel { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
+       .carousel { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 20px; }
        .carousel::-webkit-scrollbar { height: 4px; }
        .carousel::-webkit-scrollbar-thumb { background: #333; }
        .swatch {
-           flex: 0 0 auto; width: 110px; cursor: pointer; text-align: center;
-           transition: all 0.3s ease;
+           flex: 0 0 auto; width: 120px; cursor: pointer; text-align: center;
        }
-       .swatch img {
-           width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
-           border: 2px solid #2a2a2a; transition: all 0.3s ease;
+       .swatch .circle {
+           width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+           border: 2px solid #2a2a2a; transition: border-color 0.3s ease;
+       }
+       .swatch .circle img {
+           width: 100%; height: 100%; object-fit: cover; display: block;
+           transition: transform 0.3s ease;
        }
        .swatch p {
            font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
            color: #8a857c; margin-top: 10px;
        }
-       .swatch.selected img {
-           border: 3px solid #ece7df; transform: scale(1.15);
-           box-shadow: 0 0 25px rgba(236,231,223,0.3);
-       }
+       .swatch.selected .circle { border-color: #ece7df; }
        .swatch.selected p { color: #ece7df; }
        .selected-info {
            margin-top: 35px; padding: 25px; background-color: #141414;
@@ -133,12 +133,12 @@
        materials.forEach(function(m, i) {
            var div = document.createElement('div');
            div.className = 'swatch';
-           div.innerHTML = '<img src="' + m.img + '"><p>' + m.name + '</p>';
+           div.innerHTML = '<div class="circle"><img src="' + m.img + '"></div><p>' + m.name + '</p>';
            div.onclick = function() {
                var all = carousel.children;
                for (var j = 0; j < all.length; j++) all[j].classList.remove('selected');
                div.classList.add('selected');
-               selectedInfo.innerHTML = '<h4>' + m.name + '</h4><p>Selected — tap to continue</p>';
+               selectedInfo.innerHTML = '<h4>' + m.name + '</h4><p>Selected</p>';
            };
            carousel.appendChild(div);
        });
